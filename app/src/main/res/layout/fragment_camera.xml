@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/preview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.xiaopo.flying.poicamera.ui.custom.AutoFitTextureView
+            android:id="@+id/texture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <ImageView
+            android:id="@+id/iv_focus"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/focus_area"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/translucent">
+
+        <ImageView
+            android:id="@+id/btn_switch_camera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:scaleType="centerInside"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/ic_camera_front_white_24dp" />
+
+        <ImageView
+            android:id="@+id/btn_switch_grid_mode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_grid_off_white_24dp" />
+
+        <ImageView
+            android:id="@+id/btn_switch_flash_mode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:scaleType="centerInside"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_flash_auto_white_24dp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/handlebar"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/container">
+
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/btn_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/button_capture"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_camera_alt_white_24dp"
+        app:layout_constraintCenterX_toCenterX="@id/handlebar"
+        app:layout_constraintCenterY_toCenterY="@id/handlebar" />
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/btn_flash"-->
+        <!--android:layout_width="72dp"-->
+        <!--android:layout_height="72dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/ic_flash_auto_white_24dp"-->
+        <!--app:layout_constraintCenterY_toCenterY="@id/handlebar"-->
+        <!--app:layout_constraintStart_toStartOf="@id/container" />-->
+
+</android.support.constraint.ConstraintLayout>
