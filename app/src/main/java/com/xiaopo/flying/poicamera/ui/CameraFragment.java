@@ -1,6 +1,7 @@
 package com.xiaopo.flying.poicamera.ui;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,12 +19,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.xiaopo.flying.poicamera.CameraModule;
-import com.xiaopo.flying.poicamera.CameraOpenHelper;
-import com.xiaopo.flying.poicamera.CameraPrototype;
-import com.xiaopo.flying.poicamera.PhotoCaptureCallback;
-import com.xiaopo.flying.poicamera.PhotoCaptureParameters;
 import com.xiaopo.flying.poicamera.R;
+import com.xiaopo.flying.poicamera.poicamera.CameraModule;
+import com.xiaopo.flying.poicamera.poicamera.CameraOpenHelper;
+import com.xiaopo.flying.poicamera.poicamera.CameraPrototype;
+import com.xiaopo.flying.poicamera.poicamera.PhotoCaptureCallback;
+import com.xiaopo.flying.poicamera.poicamera.PhotoCaptureParameters;
 import com.xiaopo.flying.poicamera.ui.custom.AutoFitTextureView;
 import com.xiaopo.flying.poicamera.util.FileUtil;
 
@@ -185,6 +186,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), saveFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
 
                 FileUtil.notifySystemGallery(getContext(), saveFile);
+
+                jumpToProcess(saveFile);
             }
 
             @Override
@@ -194,6 +197,18 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         });
 
         mCameraModule.takePicture(parameters);
+    }
+
+    private void jumpToProcess(File saveFile) {
+        if (saveFile == null) {
+            Log.e(TAG, "jumpToProcess: the file is null");
+            return;
+        }
+
+        Intent intent = new Intent(getContext(), ProcessActivity.class);
+        intent.putExtra(ProcessActivity.INTENT_KEY_PATH, saveFile.getAbsolutePath());
+
+        startActivity(intent);
     }
 
     @Override

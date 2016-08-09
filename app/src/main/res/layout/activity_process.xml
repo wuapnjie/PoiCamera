@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_process"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaopo.flying.poicamera.ui.ProcessActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/tab_height"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <jp.co.cyberagent.android.gpuimage.GPUImageView
+                android:id="@+id/gpu_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+            </jp.co.cyberagent.android.gpuimage.GPUImageView>
+
+        </LinearLayout>
+
+
+        <com.xiaopo.flying.poicamera.ui.custom.TranslateFrameLayout
+            android:id="@+id/translate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/filter_preview_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="56dp"
+                android:background="@color/gray"
+                android:padding="2dp"
+                android:visibility="invisible">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:layout_gravity="bottom"
+                android:background="@color/light_gray">
+
+            </android.support.design.widget.TabLayout>
+        </com.xiaopo.flying.poicamera.ui.custom.TranslateFrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

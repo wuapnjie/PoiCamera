@@ -1,4 +1,4 @@
-package com.xiaopo.flying.poicamera;
+package com.xiaopo.flying.poicamera.poicamera;
 
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
@@ -124,7 +124,7 @@ public class PoiCamera implements CameraPrototype {
 
     private OnPreviewStartListener mOnPreviewStartListener;
 
-    private FlashMode mFlahMode = FlashMode.AUTO;
+    private FlashMode mFlashMode = FlashMode.AUTO;
 
     private CameraCaptureSession.CaptureCallback mFocusStateListener = new CameraCaptureSession.CaptureCallback() {
         private void process(CaptureRequest request, CaptureResult result) {
@@ -195,7 +195,8 @@ public class PoiCamera implements CameraPrototype {
             mAERegions = ZERO_WEIGHT_3A_REGION;
             mAFRegions = ZERO_WEIGHT_3A_REGION;
             mControlAFMode = AutoFocusMode.CONTINUOUS_PICTURE;
-            sendRepeatPreviewRequest();
+            if (mCameraDevice != null)
+                sendRepeatPreviewRequest();
         }
     };
 
@@ -326,7 +327,7 @@ public class PoiCamera implements CameraPrototype {
         builder.set(CaptureRequest.CONTROL_AE_REGIONS, mAERegions);
         builder.set(CaptureRequest.SCALER_CROP_REGION, mCropRegion);
         builder.set(CaptureRequest.CONTROL_AF_MODE, mControlAFMode.switchToCamera2FocusMode());
-        builder.set(CaptureRequest.CONTROL_AE_MODE, mFlahMode.switchToCamera2Mode());
+        builder.set(CaptureRequest.CONTROL_AE_MODE, mFlashMode.switchToCamera2Mode());
         builder.set(CaptureRequest.CONTROL_AF_TRIGGER, CameraMetadata.CONTROL_AF_TRIGGER_IDLE);
         // Enable face detection
         builder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE,
@@ -487,7 +488,7 @@ public class PoiCamera implements CameraPrototype {
     @Override
     public boolean setFlashMode(FlashMode flashMode) {
         if (isFlashSupport()) {
-            mFlahMode = flashMode;
+            mFlashMode = flashMode;
             sendRepeatPreviewRequest();
             return true;
         }

@@ -3,10 +3,7 @@ package com.xiaopo.flying.poicamera.util;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.params.MeteringRectangle;
-
-import com.xiaopo.flying.poicamera.CameraPrototype;
 
 /**
  * Created by snowbean on 16-7-29.

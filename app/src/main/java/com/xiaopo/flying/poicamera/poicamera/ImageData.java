@@ -1,4 +1,4 @@
-package com.xiaopo.flying.poicamera;
+package com.xiaopo.flying.poicamera.poicamera;
 
 import android.media.Image;
 
